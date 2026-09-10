@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Revision";
+}
+
+<h1>Text Revision</h1>
+
+<form method="post" asp-action="Revise">
+    <div class="mb-3">
+        <label for="inputText" class="form-label">Input text</label>
+        <textarea class="form-control" id="inputText" name="inputText" rows="6">@ViewBag.Input</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Revise</button>
+</form>
+
+@if (ViewBag.Result != null)
+{
+    <hr />
+    <h2>Result</h2>
+    <div class="card card-body">@ViewBag.Result</div>
+}
