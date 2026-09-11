@@ -5,12 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Configuration: Python API base URL (appsettings.Development.json or environment variables)
 var pythonBaseUrl = builder.Configuration["PythonApi:BaseUrl"] ?? "http://localhost:8000";
 
-// Typed HttpClient with base URL from config
-builder.Services.AddHttpClient<IPythonApiClient, PythonApiClient>(client =>
-{
-    client.BaseAddress = new Uri(pythonBaseUrl);
-    client.Timeout = TimeSpan.FromSeconds(30);
-});
+// Use a local in-process implementation instead of an external Python API
+builder.Services.AddSingleton<IPythonApiClient, LocalApiClient>();
 
 builder.Services.AddControllersWithViews();
 
