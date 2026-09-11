@@ -4,7 +4,8 @@
 
 <h1>Text Revision</h1>
 
-<form method="post" asp-action="Revise" class="mb-3">
+<form method="post" asp-controller="Revision" asp-action="Revise" class="mb-3">
+    @Html.AntiForgeryToken()
     <div class="mb-3">
         <label for="inputText" class="form-label">Input text</label>
         <textarea class="form-control" id="inputText" name="inputText" rows="6">@ViewBag.Input</textarea>
