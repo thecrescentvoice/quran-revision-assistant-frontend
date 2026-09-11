@@ -8,12 +8,14 @@ namespace Presentation.Controllers
     {
         private readonly IPythonApiClient _api;
         public RevisionController(IPythonApiClient api) => _api = api;
-n        [HttpGet]
+
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
-n        [HttpPost]
+
+        [HttpPost]
         public async Task<IActionResult> Revise(string inputText)
         {
             var resp = await _api.ReviseAsync(new ReviseRequest { Text = inputText });
